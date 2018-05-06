@@ -48,9 +48,9 @@ namespace WorkTask
         }
 
         //Поиск авто по максимальной скорости
-        public static List<AbstractCar> SearchCarMaxSpeed(List <AbstractCar> carValue, int minSpeed, int maxSpeed)
+        public static List<AbstractCar> SearchCarMaxSpeed(List <AbstractCar> carValue, int minSpeedValue, int maxSpeedValue)
         {
-            return carValue.Where(t => t.Speed > minSpeed && t.Speed < maxSpeed).ToList();
+            return carValue.Where(t => t.maxSpeed > minSpeedValue && t.maxSpeed < maxSpeedValue).ToList();
         }
     }
 }
