@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace WorkTask.Classes
 {
-    class LuxuryCar
+    class LuxuryCar : AbstractCar
     {
+        public string privateDriver;
+        public LuxuryCar(int cost, int fuel, int speed, int luggage, string model, string driver)
+            : base (cost, fuel, speed, luggage, model)
+        {
+            privateDriver = driver;
+        }
     }
 }
