@@ -14,5 +14,10 @@ namespace WorkTask.Classes
         {
             privateDriver = driver;
         }
+
+        public override void CarInfo()
+        {
+            Console.WriteLine(this.cost+"\t" + ""); ;
+        }
     }
 }

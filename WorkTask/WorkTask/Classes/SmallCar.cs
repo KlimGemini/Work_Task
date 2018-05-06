@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace WorkTask.Classes
 {
-    class SmallCar
+    class SmallCar : AbstractCar
     {
+        public SmallCar(int cost, int fuel, int speed, int luggage, string model)
+            : base(cost, fuel, speed, luggage, model) { }
+
+        public override void CarInfo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
