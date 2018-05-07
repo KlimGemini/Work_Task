@@ -43,7 +43,7 @@ namespace WorkTask
             Console.WriteLine();
             //---------------------------------------
             //Сортировка по расходу топлива
-            Console.WriteLine("Сортировка автомобилей по расходу топлива:");
+            Console.WriteLine("Сортировка автомобилей по расходу топлива:\n");
 
             var sortFuel = cars.OrderBy(taxi => taxi.fuel);
             foreach (AbstractCar taxi in sortFuel)
@@ -51,8 +51,13 @@ namespace WorkTask
 
             Console.WriteLine();
             //--------------------------------------
-            Console.WriteLine(@"Поиск по интервалу скорости, 150-320 км\ч");
-            SearchCarMaxSpeed(cars, 150, 320);
+            Console.WriteLine($"Поиск по интервалу скорости, 150-220 км\\ч\n");
+            
+            List<AbstractCar> temp = SearchCarByMaxSpeed(cars, 150, 220);
+            foreach (var item in temp)
+            {
+                Console.WriteLine($"Искомый автомобиль с интервалом скорости  --> {item.model, -15}\t| {item.maxSpeed}");
+            }
 
             Console.ReadKey();
         }
@@ -67,39 +72,19 @@ namespace WorkTask
             {
                 sum += cars[i].cost;
             }
-            Console.WriteLine("Суммарная стоимость автомобилей");
+            Console.WriteLine("Суммарная стоимость автомобилей\n");
             Console.WriteLine($"{sum:### ### ###}, $");
         }
 
 
         //----------------------------------------------------
-        //Поиск авто по максимальной скорости
-        static void SearchCarMaxSpeed(List<AbstractCar> carsList, int speedMinValue, int speedMaxValue)
+        //Поиск авто по максимальной скорости        
+
+        public static List<AbstractCar> SearchCarByMaxSpeed(List<AbstractCar> carListValue,int minSpeed, int maxSpeed)
         {
-            List <AbstractCar> cars = carsList;
-            bool pointer1 = false;
-            int val1 = speedMinValue;
-            int val2 = speedMaxValue;
-
-            //if ((speed1 < 0 || speed2 < 0) || (speed1 > speed2))
-            //{
-            //    Console.WriteLine("Условия поиска некорректны!");
-            //    return;
-            //}
-
-
-            for (int i = 0; i < cars.Count - 1; i++)
-            {
-                if ((cars[i].maxSpeed >= val1) && (cars[i].maxSpeed <= val2))
-                {
-                    Console.WriteLine($"Искомый автомобиль с интервалом скорости {val1} - {val2} км\\ч--> {cars[i].model}");
-                    pointer1 = true;
-                }
-            }
-            if (!pointer1)
-            {
-                Console.WriteLine("Автомобиль с заданным интервалом скорости не найден.");
-            }
+            List<AbstractCar> _carList = carListValue;
+            return _carList.Where(t => t.maxSpeed > minSpeed && t.maxSpeed < maxSpeed).ToList();
         }
+
     }
 }
