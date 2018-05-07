@@ -13,7 +13,7 @@ namespace WorkTask.Classes
 
         public override void CarInfo()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{model,-20}\t|{cost,-12}\t|{fuel,-15}\t|{maxSpeed,-15}\t|{luggage,-12}\n");
         }
     }
 }

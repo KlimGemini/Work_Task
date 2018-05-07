@@ -27,19 +27,32 @@ namespace WorkTask
 
             };
             //-------------------------------------------------
-            
-            GetSummaryCost(cars);
+            string[] Label = { "Модель", "Стоимость, $", "Расход топлива, л", "Скорость, км/ч", "Багажник, л", "Личный водитель" };
+            Console.WriteLine("Таксопарк Fresh_Way:\n");
+            Console.WriteLine($"{Label[0],-20}\t|{Label[1],-12}\t|{Label[2],-15}\t|{Label[3],-15}\t|{Label[4],-12}\t|{Label[5],-15}\n");
 
+            foreach (AbstractCar item in cars)
+            {
+                item.CarInfo();
+            }
+
+            //-------------------------------------------------
+
+            CalcSummaryCost(cars);
+
+            Console.WriteLine();
             //---------------------------------------
             //Сортировка по расходу топлива
             Console.WriteLine("Сортировка автомобилей по расходу топлива:");
 
             var sortFuel = cars.OrderBy(taxi => taxi.fuel);
             foreach (AbstractCar taxi in sortFuel)
-            Console.WriteLine($"{taxi.fuel}, л/100км");
-            //--------------------------------------
+            Console.WriteLine($"{taxi.model, -20}\t{taxi.fuel}, л/100км");
 
-            
+            Console.WriteLine();
+            //--------------------------------------
+            Console.WriteLine(@"Поиск по интервалу скорости, 150-320 км\ч");
+            SearchCarMaxSpeed(cars, 150, 320);
 
             Console.ReadKey();
         }
@@ -47,7 +60,7 @@ namespace WorkTask
 
         //---------------------------------------------------
         //Стоимость парка автомобилей
-        static void GetSummaryCost(List<AbstractCar> cars)
+        static void CalcSummaryCost(List<AbstractCar> cars)
         {
             int sum = 0;
             for (int i = 0; i < cars.Count - 1; i++)
@@ -55,7 +68,7 @@ namespace WorkTask
                 sum += cars[i].cost;
             }
             Console.WriteLine("Суммарная стоимость автомобилей");
-            Console.WriteLine($"{sum:### ### ###}, $\n");
+            Console.WriteLine($"{sum:### ### ###}, $");
         }
 
 
@@ -79,7 +92,7 @@ namespace WorkTask
             {
                 if ((cars[i].maxSpeed >= val1) && (cars[i].maxSpeed <= val2))
                 {
-                    Console.WriteLine($"Искомый автомобиль с интервалом скорости {val1} - {val2} --> {cars[i].model}");
+                    Console.WriteLine($"Искомый автомобиль с интервалом скорости {val1} - {val2} км\\ч--> {cars[i].model}");
                     pointer1 = true;
                 }
             }
