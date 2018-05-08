@@ -39,8 +39,9 @@ namespace WorkTask
             //-------------------------------------------------
 
             CalcSummaryCost(cars);
-
-            Console.WriteLine();
+           
+            Console.WriteLine("Суммарная стоимость автомобилей\n");
+            Console.WriteLine("{0:### ### ###}, $\n", cars.Sum(t => t.cost));
             //---------------------------------------
             //Сортировка по расходу топлива
             Console.WriteLine("Сортировка автомобилей по расходу топлива:\n");
@@ -68,12 +69,16 @@ namespace WorkTask
         static void CalcSummaryCost(List<AbstractCar> cars)
         {
             int sum = 0;
-            for (int i = 0; i < cars.Count - 1; i++)
+            //for (int i = 0; i < cars.Count - 1; i++)
+            //{
+            //    sum += cars[i].cost;
+            //}
+            foreach (AbstractCar item in cars)
             {
-                sum += cars[i].cost;
+                sum += item.cost;
             }
             Console.WriteLine("Суммарная стоимость автомобилей\n");
-            Console.WriteLine($"{sum:### ### ###}, $");
+            Console.WriteLine($"{sum:### ### ###}, $\n");
         }
 
 
