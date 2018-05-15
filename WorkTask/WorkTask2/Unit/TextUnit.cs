@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace WorkTask2.Unit
 {
-    class TextUnit
+    public abstract class TextUnit
     {
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
     }
 }
